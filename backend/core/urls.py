@@ -1,3 +1,7 @@
+from django.contrib import admin
+from django.urls import path
+from rest_framework import permissions
+
 """
 URL configuration for core project.
 
@@ -16,7 +20,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from geosuport.views import GEOView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
+    #path('api/users/register', RegisterView.as_view(), name='register'),
+    #path('api/users/login', LoginView.as_view(), name='login'),
+    #path('api/users/logout', LogoutView.as_view(), name='logout'),
+    #path('api/users/profile', UserProfileView.as_view(), name='profile'),
+    #path('api/bikes/list', ListBikeView.as_view(), name='bikes'),
+    #path('api/bikes/rent_start', RentStartView.as_view(), name='rent_start'),
+    #path('api/bikes/rent_end', RentEndView.as_view(), name='rent_end'),
+
 ]
