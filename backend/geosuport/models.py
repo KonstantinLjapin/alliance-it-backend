@@ -1,9 +1,11 @@
-from django.db import models
+#from django.contrib.gis.db import models
+#from django.db import models
+
+from django.contrib.gis.db import models
 
 
-class GEO(models.Model):
-    title = models.CharField(max_length=255)
-    anti = models.BooleanField(default=False)
-
-    def __str__(self):
-        return "GEO " + str(self.title)
+class Shop(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.PointField()
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)

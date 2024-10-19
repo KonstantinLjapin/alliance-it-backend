@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'rest_framework',
     'django_filters',
     'geosuport',
@@ -95,7 +96,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Используется PostgreSQL
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',  # Используется PostgreSQL
         'NAME': env.str("POSTGRES_DB"),  # Имя базы данных
         'USER': env.str("POSTGRES_USER"),  # Имя пользователя
         'PASSWORD': env.str("POSTGRES_PASSWORD"),  # Пароль пользователя

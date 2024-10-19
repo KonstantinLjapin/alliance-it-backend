@@ -1,9 +1,6 @@
-from django.contrib import admin
-from .models import GEO
+from django.contrib.gis.admin import ModelAdmin
+from .models import Shop
 
 
-@admin.register(GEO)
-class CustomGeoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'anti')
 
 
