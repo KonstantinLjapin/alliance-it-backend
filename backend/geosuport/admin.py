@@ -1,10 +1,10 @@
 from django.contrib.gis import admin
-from .models import Shop
+from .models import Fildmap
 
 
-@admin.register(Shop)
+@admin.register(Fildmap)
 class ShopAdmin(admin.GISModelAdmin):
-    list_display = ('name', 'location')
+    list_display = ('antimeridian', 'location')
 
 
 

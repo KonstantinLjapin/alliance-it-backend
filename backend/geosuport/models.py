@@ -1,12 +1,8 @@
-#from django.contrib.gis.db import models
-#from django.db import models
-
-
 from django.contrib.gis.db import models
 
 
-class Shop(models.Model):
-    name = models.CharField(max_length=100)
-    location = models.PointField()
-    address = models.CharField(max_length=100)
-    city = models.CharField(max_length=50)
+class Fildmap(models.Model):
+    lon = models.FloatField(null=True, blank=True)
+    lat = models.FloatField(null=True, blank=True)
+    antimeridian = models.BooleanField(default=False)
+    location = models.PointField(null=True, blank=True)
