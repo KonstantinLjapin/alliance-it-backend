@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Fildmap
 from django.contrib.gis.geos import Point
-
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 class FildmapUploadSerializer(serializers.Serializer):
     """Сериализатор для записи координат в модель бд"""
@@ -9,7 +9,7 @@ class FildmapUploadSerializer(serializers.Serializer):
     lat = serializers.FloatField()
 
     def validate(self, data):
-        # TODO написать логику антимеридиана
+        #
         data.update({'antimeridian': True})
         location = Point(float(data.get('lon')), float(data.get('lat')))
         data.update({'location': location})
@@ -19,8 +19,9 @@ class FildmapUploadSerializer(serializers.Serializer):
         return Fildmap.objects.create(**validated_data)
 
 
-class FildmaploadSerializer(serializers.Serializer):
-    """Сериализатор выгрузки  координат из модели бд"""
+class FildmaploadSerializer(GeoFeatureModelSerializer):
+    """Сериализатор выгрузки  координат из модели бд в формате geo json rfc7946"""
     class Meta:
         model = Fildmap
-        fields = ('id', 'lon', 'lat', 'antimeridian', 'location')
+        geo_field = 'location'
+        fields = ('id', 'lon', 'lat', 'antimeridian')

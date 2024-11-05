@@ -43,6 +43,21 @@ services:
       retries: 10
     restart: unless-stopped
 
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4:latest
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    volumes:
+      - ./dump/pgadmin:/var/lib/pgadmin
+
+    ports:
+      - "5050:80"
+    networks:
+      - backend
+    restart: unless-stopped
 
 
 networks:

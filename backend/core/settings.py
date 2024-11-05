@@ -40,7 +40,7 @@ SECRET_KEY = 'django-insecure-lg48oybz&0s_-+pxa$%kl^ppne7yec!!yz(fv-9na%&1!pu^zz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0:8000', '0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0:8000', '0.0.0.0', 'http://localhost:3000', 'localhost:3000']
 
 
 # Application definition
@@ -55,8 +55,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'rest_framework',
+    'rest_framework_gis',
     'django_filters',
     'geosuport',
+    'corsheaders',
 ]
 
 
@@ -68,9 +70,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -108,6 +112,7 @@ DATABASES = {
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework_gis.schema.GeoFeatureAutoSchema',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
     ]

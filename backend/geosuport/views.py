@@ -6,7 +6,7 @@ from .serializers import FildmapUploadSerializer, FildmaploadSerializer
 from .models import Fildmap
 
 
-class Fildmapview(APIView):
+class AddFildmapview(APIView):
     """Вью для загрузки кооординат"""
     permission_classes = [permissions.AllowAny]
     authentication_classes = []

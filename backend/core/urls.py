@@ -20,11 +20,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from geosuport.views import Fildmapview, FildmapListview
+from geosuport.views import AddFildmapview, FildmapListview
 
 urlpatterns = [
     path('api/admin/', admin.site.urls),
-    path('api/register', Fildmapview.as_view(), name='register'),
+    path('api/register', AddFildmapview.as_view(), name='register'),
     path('api/allfilds', FildmapListview.as_view(), name='filds'),
     #path('api/users/logout', LogoutView.as_view(), name='logout'),
     #path('api/users/profile', UserProfileView.as_view(), name='profile'),
